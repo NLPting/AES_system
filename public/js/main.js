@@ -270,7 +270,7 @@ $(document).on('click','.B-II',function(){
     console.log(sen , tag)
     var query = ''
     var tmp = []
-    index_arry = [parseInt(index)-1 , parseInt(index) , parseInt(index)+1]
+    index_arry = [parseInt(index)-1 , parseInt(index) , parseInt(index)+1,parseInt(index)+2]
     console.log(index_arry)
     
     for(i=0;i<index_arry.length;i++){
