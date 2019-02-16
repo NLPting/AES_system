@@ -23,7 +23,7 @@ function score_it_post(query){
         type: "POST",
         url: API_URL,
         data: JSON.stringify({courpus: query}),
-        dataType: 'text',
+        dataType: 'json',
         success: function (data) {
             cerf_show(data)
         }, 
@@ -100,10 +100,13 @@ function revise_content(data , score){
 
 
 function cerf_show(data){
+    document.getElementById("cerf-leve").innerHTML = data['cerf'];
+    document.getElementById("cerf-score").innerHTML = data['score'];
+    document.getElementById("score-bar").innerHTML = data['score']+'%';
+    $('#score-bar').outerWidth(data['score']+'%')
     
-    document.getElementById("cerf-leve").innerHTML = data;
-    document.getElementById("cerf-score").innerHTML = '70';
-    if (data == 'A1'){
+
+    if (data['cerf'] == 'A1'){
         
         $('#a2').css("background-color",'#e9ecef');
         $('#b1').css("background-color",'#e9ecef');
@@ -112,7 +115,7 @@ function cerf_show(data){
         $('#c2').css("background-color",'#e9ecef');
 
     }
-    else if(data == 'A2'){
+    else if(data['cerf'] == 'A2'){
         
         $('#b1').css("background-color",'#e9ecef');
         $('#b2').css("background-color",'#e9ecef');
@@ -120,19 +123,19 @@ function cerf_show(data){
         $('#c2').css("background-color",'#e9ecef');
     
     }
-    else if(data == 'B1'){
+    else if(data['cerf'] == 'B1'){
         
         $('#b2').css("background-color",'#e9ecef');
         $('#c1').css("background-color",'#e9ecef');
         $('#c2').css("background-color",'#e9ecef');
     }
-    else if(data == 'B2'){
+    else if(data['cerf'] == 'B2'){
         
         $('#c1').css("background-color",'#e9ecef');
         $('#c2').css("background-color",'#e9ecef');
 
     }
-    else if(data == 'C1'){
+    else if(data['cerf'] == 'C1'){
         $('#c2').css("background-color",'#e9ecef');
     }
     $('#score-feeback').show();
