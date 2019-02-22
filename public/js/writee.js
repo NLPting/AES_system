@@ -1,8 +1,7 @@
 last = "";
 spanned = true;
-api = "http://writeahead.nlpweb.org/"
-
-
+//api = "http://writeahead.nlpweb.org/"
+API_URL = "http://thor.nlplab.cc:7779/write_call"
 
 function _showHint(str, hover) {
   if (str.length == 0) {
@@ -12,20 +11,26 @@ function _showHint(str, hover) {
     }
 
     if (hover != undefined) {
-      var url=api+"add?text=" + str + "&hover="+hover;
+      var query="add?text=" + str + "&hover="+hover;
       } else {
-      var url=api+"add?text=" + str;
+      var query="add?text=" + str;
     }
 
-    xmlHttp=new XMLHttpRequest();
-    xmlHttp.open("GET",url,true);
-    xmlHttp.send();
-    xmlHttp.onreadystatechange=function() {
-    if(xmlHttp.readyState==4) {
-        //$("#entries")[0].innerHTML=xmlHttp.responseText;
-        console.log(xmlHttp.responseText)
-      }
-    }
+    $.ajax({
+      type: "POST",
+      url: API_URL,
+      data: query,
+      dataType: 'text',
+      success: function (data) {
+        $("#entries")[0].innerHTML=data;
+          //console.log(data)
+      }, 
+      error: function(XMLHttpRequest, textStatus, errorThrown) { 
+          
+          console.log("Status: " + textStatus); 
+          console.log("Error: " + errorThrown); 
+      } 
+  })
 
   
 }

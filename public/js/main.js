@@ -7,11 +7,9 @@ $("#try-aes").hide()
 //document.getElementById('try-aes').disabled=true;
 
 
-API_URL = "http://thor.nlplab.cc:7777/aes"
+API_URL_s = "http://thor.nlplab.cc:7777/aes"
 API_URL_d = "http://thor.nlplab.cc:7777/aes_dect"
 API_URL_d_sen = "http://thor.nlplab.cc:7777/dect_sen"
-
-
 
 
 
@@ -21,7 +19,7 @@ function score_it_post(query){
     
     $.ajax({
         type: "POST",
-        url: API_URL,
+        url: API_URL_s,
         data: JSON.stringify({courpus: query}),
         dataType: 'json',
         success: function (data) {
@@ -100,6 +98,7 @@ function revise_content(data , score){
 
 
 function cerf_show(data){
+
     document.getElementById("cerf-leve").innerHTML = data['cerf'];
     document.getElementById("cerf-score").innerHTML = data['score'];
     document.getElementById("score-bar").innerHTML = data['score']+'%';
@@ -148,10 +147,11 @@ function applyHighlights(text) {
         .replace(/[A-Z].*?\b/g, '<mark>$&</mark>');
 }
 
+
 $("#send-aes").click(function(){
-    var sentence = aes_content.val()
-    
-    
+    var sentence = $("#write-aes").text()
+    console.log(sentence)
+
 
     $('#a1').css("background-color",'#17a2b8');
     $('#a2').css("background-color",'#17a2b8');
@@ -159,6 +159,7 @@ $("#send-aes").click(function(){
     $('#b2').css("background-color",'#17a2b8');
     $('#c1').css("background-color",'#17a2b8');
     $('#c2').css("background-color",'#17a2b8');
+
     setTimeout(function() {
     score_it_post(sentence);
     dect_it_post(sentence);
@@ -168,8 +169,7 @@ $("#send-aes").click(function(){
 })
 
 $("#try-aes").click(function(){
-    
-
+    var sentence = $("#write-aes").text()
     $("#try-aes").hide()
     $('#score-feeback').hide();
     $('#feedback-dectect').hide();
