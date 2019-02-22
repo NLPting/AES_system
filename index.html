@@ -9,6 +9,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <!-- highlight-within-textarea CSS/JS -->
+        
 		
 
     </head>
@@ -26,30 +27,26 @@
             <div class="leftDiv">
                 <div class="texth4"><h4>Input Essay</h4></div>
                 <div class='text-body'>
-                    <div >
-                    <div class="form-group shadow-textarea">
-                        <textarea class="form-control z-depth-1" for="exampleFormControlTextarea6" rows="18" placeholder="Write something here..." id='write-aes'></textarea>
-                        <div class="alert alert-primary" role="alert" id='inalert'>
-                            <a href="#" class="alert-link" id='word_count'>0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Try to write more.)
-                        </div>
+                    
+                            
+                    
+                    <div contenteditable="" id="write-aes">
+                        
                     </div>
+                            
+                        <!----<div class="alert alert-primary" role="alert" id='inalert'>
+                            <a href="#" class="alert-link" id='word_count'>0 </a><a href="#" class="alert-link">words entered</a> (You should enter <a href="#" class="alert-link">30 words.</a>Try to write more.)
+                        </div>-->
+                    
                     <div class="row">
-                        <div class="col-sen-toop">
-                            <div class="card">
-                            <div class="card-body-sen">
-                                <h5 class="card-title-sen p-sen text-center">Sentence-level feedback</h5>
-                                <div class='p-sens'>
-                                <p class="p-sen sen-good">This seems to be a good sentence.</p>
-                                <p class="p-sen sen-notok">This sentence could maybe be improved.</p>
-                                <p class="p-sen sen-bad">There are some problems in this sentence.</p>
-                                </div>
-                            </div>
-                            </div>
+                        <div>
+                            <ul class=entries id="entries">
+                            </ul>
                         </div>
-                        <div class="col-button">
+                        <!----<div class="col-button">
                             <button type="button" class="btn btn-outline-primary btn-lg float-right" id="send-aes">check</button>
                             <button type="button" class="btn btn-outline-primary btn-lg float-right" id="try-aes">check again</button>
-                        </div>
+                        </div>-->
                     </div>
             </div>
         </div>
@@ -148,5 +145,6 @@
             
         <script src="./js/main.js"></script>
         <script src="./js/linggle.js"></script>
+        <script src="./js/writee.js"></script>
     </body>
 </html>
